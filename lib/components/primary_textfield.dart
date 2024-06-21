@@ -28,7 +28,7 @@ class _PrimaryTextfieldState extends State<PrimaryTextfield> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        bottom: 10,
+        bottom: 12,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

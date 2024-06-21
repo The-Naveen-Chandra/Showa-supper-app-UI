@@ -20,6 +20,7 @@ class ConstantColors {
   static Color borderColor = hexToColor('#ECECEC');
 
   static Color backgroundColor = hexToColor('#f4f6fa');
+  static Color backgroundWhiteColor = hexToColor('#F5F5F5');
 
   static Color lightGrey = hexToColor('#F3F4F6');
   static Color grey = Colors.grey[300]!;
