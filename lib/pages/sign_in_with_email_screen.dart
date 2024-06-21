@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/primary_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/sign_in_reset_password_screen.dart';
+import 'package:showa_supper_app/pages/reset_password_screen.dart';
 
 class SignInWithEmailScreen extends StatefulWidget {
   const SignInWithEmailScreen({super.key});
@@ -154,7 +155,7 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
-                                        const SignInResetPasswordScreen(),
+                                        const ResetPasswordScreen(),
                                   ),
                                 );
                               },

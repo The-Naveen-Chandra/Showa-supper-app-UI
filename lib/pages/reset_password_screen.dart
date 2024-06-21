@@ -5,15 +5,14 @@ import 'package:showa_supper_app/components/primary_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 
-class SignInResetPasswordScreen extends StatefulWidget {
-  const SignInResetPasswordScreen({super.key});
+class ResetPasswordScreen extends StatefulWidget {
+  const ResetPasswordScreen({super.key});
 
   @override
-  State<SignInResetPasswordScreen> createState() =>
-      _SignInResetPasswordScreenState();
+  State<ResetPasswordScreen> createState() => _ResetPasswordScreenState();
 }
 
-class _SignInResetPasswordScreenState extends State<SignInResetPasswordScreen> {
+class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
   bool? isChecked = true;
 
   @override
