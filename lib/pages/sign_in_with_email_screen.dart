@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/primary_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 import 'package:showa_supper_app/pages/reset_password_screen.dart';
+import 'package:showa_supper_app/pages/sign_up_screen.dart';
 
 class SignInWithEmailScreen extends StatefulWidget {
   const SignInWithEmailScreen({super.key});
@@ -46,7 +46,7 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, top: 30),
+                padding: const EdgeInsets.only(left: 6, top: 26),
                 child: IconButton(
                   icon: Icon(
                     Icons.arrow_back_ios,
@@ -78,136 +78,170 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
                       topRight: Radius.circular(24),
                     ),
                   ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      const SizedBox(height: 34),
-                      Text(
-                        "Welcome Back",
-                        style: GoogleFonts.poppins(
-                          fontSize: ConstantFontSize.extraExtraLarge,
-                          fontWeight: ConstantFontWeight.bold,
-                          color: ConstantColors.primaryTextColor,
+                  child: LayoutBuilder(
+                    builder: (context, constraints) {
+                      return SingleChildScrollView(
+                        padding: EdgeInsets.only(
+                          bottom: MediaQuery.of(context).viewInsets.bottom,
                         ),
-                      ),
-                      Text(
-                        "Enter your details below",
-                        style: GoogleFonts.poppins(
-                          fontSize: ConstantFontSize.small,
-                          fontWeight: ConstantFontWeight.normal,
-                          color: ConstantColors.secondaryTextColor,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      PrimaryTextfield(
-                        text: "Email Address",
-                        hintText: "Your email address",
-                        controller: TextEditingController(),
-                      ),
-                      PrimaryTextfield(
-                        text: "Password",
-                        hintText: "Your password",
-                        controller: TextEditingController(),
-                        isPassword: true,
-                      ),
-                      const SizedBox(height: 22),
-                      PrimaryButton(
-                        text: "Sign In",
-                        color: ConstantColors.primaryColor,
-                        onPressed: () {},
-                        verticalHeight: 12,
-                        textColor: ConstantColors.whiteColor,
-                        fontSize: ConstantFontSize.small,
-                        fontWeight: ConstantFontWeight.semiBold,
-                        borderColor: ConstantColors.primaryColor,
-                        paddingRequired: false,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Checkbox(
-                                activeColor: ConstantColors.primaryColor,
-                                value: isChecked,
-                                onChanged: (bool? value) {
-                                  setState(() {
-                                    isChecked = value!;
-                                  });
-                                },
-                              ),
-                              Text(
-                                "Remember me!",
-                                style: GoogleFonts.poppins(
-                                  fontSize: ConstantFontSize.extraSmall,
-                                  fontWeight: ConstantFontWeight.normal,
-                                  color: ConstantColors.darkGrey,
-                                ),
-                              ),
-                            ],
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minHeight: constraints.maxHeight,
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ResetPasswordScreen(),
-                                  ),
-                                );
-                              },
-                              child: Text(
-                                "Forgot your password?",
-                                style: GoogleFonts.poppins(
-                                  fontSize: ConstantFontSize.extraSmall,
-                                  fontWeight: ConstantFontWeight.semiBold,
-                                  color: ConstantColors.darkGrey,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Expanded(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              "Don't have an account?",
-                              style: GoogleFonts.poppins(
-                                fontSize: ConstantFontSize.extraSmall,
-                                fontWeight: ConstantFontWeight.semiBold,
-                                color: ConstantColors.darkGrey,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {},
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 14,
-                                  vertical: 6,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: ConstantColors.primaryColor,
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                                child: Text(
-                                  "Sign Up",
+                          child: IntrinsicHeight(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                const SizedBox(height: 34),
+                                Text(
+                                  "Welcome Back",
                                   style: GoogleFonts.poppins(
-                                    color: ConstantColors.whiteColor,
-                                    fontSize: ConstantFontSize.extraSmall,
-                                    fontWeight: ConstantFontWeight.semiBold,
+                                    fontSize: ConstantFontSize.extraExtraLarge,
+                                    fontWeight: ConstantFontWeight.bold,
+                                    color: ConstantColors.primaryTextColor,
                                   ),
                                 ),
-                              ),
+                                Text(
+                                  "Enter your details below",
+                                  style: GoogleFonts.poppins(
+                                    fontSize: ConstantFontSize.small,
+                                    fontWeight: ConstantFontWeight.normal,
+                                    color: ConstantColors.secondaryTextColor,
+                                  ),
+                                ),
+                                const SizedBox(height: 20),
+                                PrimaryTextfield(
+                                  text: "Email Address",
+                                  hintText: "Your email address",
+                                  controller: TextEditingController(),
+                                ),
+                                PrimaryTextfield(
+                                  text: "Password",
+                                  hintText: "Your password",
+                                  controller: TextEditingController(),
+                                  isPassword: true,
+                                ),
+                                const SizedBox(height: 22),
+                                PrimaryButton(
+                                  text: "Sign In",
+                                  color: ConstantColors.primaryColor,
+                                  onPressed: () {},
+                                  verticalHeight: 12,
+                                  textColor: ConstantColors.whiteColor,
+                                  fontSize: ConstantFontSize.small,
+                                  fontWeight: ConstantFontWeight.semiBold,
+                                  borderColor: ConstantColors.primaryColor,
+                                  paddingRequired: false,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Checkbox(
+                                          activeColor:
+                                              ConstantColors.primaryColor,
+                                          value: isChecked,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              isChecked = value!;
+                                            });
+                                          },
+                                        ),
+                                        Text(
+                                          "Remember me!",
+                                          style: GoogleFonts.poppins(
+                                            fontSize:
+                                                ConstantFontSize.extraSmall,
+                                            fontWeight:
+                                                ConstantFontWeight.normal,
+                                            color: ConstantColors.darkGrey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.only(right: 10),
+                                      child: TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const ResetPasswordScreen(),
+                                            ),
+                                          );
+                                        },
+                                        child: Text(
+                                          "Forgot your password?",
+                                          style: GoogleFonts.poppins(
+                                            fontSize:
+                                                ConstantFontSize.extraSmall,
+                                            fontWeight:
+                                                ConstantFontWeight.semiBold,
+                                            color: ConstantColors.darkGrey,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Spacer(),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(
+                                      "Don't have an account?",
+                                      style: GoogleFonts.poppins(
+                                        fontSize: ConstantFontSize.extraSmall,
+                                        fontWeight: ConstantFontWeight.semiBold,
+                                        color: ConstantColors.darkGrey,
+                                      ),
+                                    ),
+                                    InkWell(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignUpScreen(),
+                                          ),
+                                        );
+                                      },
+                                      child: Container(
+                                        padding: const EdgeInsets.symmetric(
+                                          horizontal: 14,
+                                          vertical: 6,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: ConstantColors.primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(4),
+                                        ),
+                                        child: Text(
+                                          "Sign Up",
+                                          style: GoogleFonts.poppins(
+                                            color: ConstantColors.whiteColor,
+                                            fontSize:
+                                                ConstantFontSize.extraSmall,
+                                            fontWeight:
+                                                ConstantFontWeight.semiBold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 58),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ),
