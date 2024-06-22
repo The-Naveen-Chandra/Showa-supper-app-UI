@@ -30,12 +30,13 @@ class PrimaryButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: MediaQuery.of(context).size.width,
-      child: InkWell(
-        onTap: onPressed,
-        child: Padding(
-          padding: EdgeInsets.only(bottom: paddingRequired ? 20 : 0),
+    return Padding(
+      padding: EdgeInsets.only(bottom: paddingRequired ? 20 : 0),
+      child: SizedBox(
+        width: MediaQuery.of(context).size.width,
+        child: InkWell(
+          onTap: onPressed,
+          borderRadius: BorderRadius.circular(30),
           child: Container(
             padding: EdgeInsets.symmetric(
               vertical: verticalHeight,
@@ -57,7 +58,7 @@ class PrimaryButton extends StatelessWidget {
                         width: 20,
                         height: 20,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 14,
                       ),
                       Text(

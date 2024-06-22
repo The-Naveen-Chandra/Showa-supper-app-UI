@@ -188,7 +188,7 @@ class _SignInWithEmailScreenState extends State<SignInWithEmailScreen> {
                                     ),
                                   ],
                                 ),
-                                Spacer(),
+                                const Spacer(),
                                 Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
