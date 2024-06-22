@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
+import 'package:showa_supper_app/pages/phone_number_screen.dart';
 import 'package:showa_supper_app/pages/sign_in_with_email_screen.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -92,7 +94,14 @@ class SignInScreen extends StatelessWidget {
               fontSize: ConstantFontSize.small,
               fontWeight: ConstantFontWeight.normal,
               iconImage: "assets/images/phone.png",
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const PhoneNumberScreen(),
+                  ),
+                );
+              },
             ),
             PrimaryButton(
               verticalHeight: 12,
