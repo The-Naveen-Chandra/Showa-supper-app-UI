@@ -6,8 +6,10 @@ import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 
 class PhoneNumberTextField extends StatefulWidget {
+  final TextEditingController controller;
   const PhoneNumberTextField({
     super.key,
+    required this.controller,
   });
 
   @override
@@ -15,23 +17,20 @@ class PhoneNumberTextField extends StatefulWidget {
 }
 
 class _PhoneNumberTextFieldState extends State<PhoneNumberTextField> {
-  final TextEditingController _controller = TextEditingController();
-
   @override
   void initState() {
     super.initState();
-    _controller.addListener(_formatInput);
+    widget.controller.addListener(_formatInput);
   }
 
   @override
   void dispose() {
-    _controller.removeListener(_formatInput);
-    _controller.dispose();
+    widget.controller.removeListener(_formatInput);
     super.dispose();
   }
 
   void _formatInput() {
-    String text = _controller.text;
+    String text = widget.controller.text;
     // Remove any non-digit characters
     text = text.replaceAll(RegExp(r'\D'), '');
 
@@ -52,7 +51,7 @@ class _PhoneNumberTextFieldState extends State<PhoneNumberTextField> {
       formatted = text;
     }
 
-    _controller.value = _controller.value.copyWith(
+    widget.controller.value = widget.controller.value.copyWith(
       text: formatted,
       selection: TextSelection.collapsed(offset: formatted.length),
     );
@@ -61,7 +60,7 @@ class _PhoneNumberTextFieldState extends State<PhoneNumberTextField> {
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _controller,
+      controller: widget.controller,
       keyboardType: TextInputType.number,
       inputFormatters: [
         FilteringTextInputFormatter.digitsOnly, // Allow only digits

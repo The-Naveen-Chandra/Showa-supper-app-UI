@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:showa_supper_app/constants/constant_colors.dart';
 
 class PrimaryButton extends StatelessWidget {
   final String text;
   final Color color;
   final Color textColor;
   final VoidCallback onPressed;
-
   final double verticalHeight;
   final double fontSize;
   final FontWeight fontWeight;
   final Color borderColor;
   final String iconImage;
   final bool paddingRequired;
+  final bool disabled;
 
   const PrimaryButton({
     super.key,
@@ -26,6 +27,7 @@ class PrimaryButton extends StatelessWidget {
     required this.borderColor,
     this.iconImage = "",
     this.paddingRequired = true,
+    this.disabled = false,
   });
 
   @override
@@ -42,10 +44,10 @@ class PrimaryButton extends StatelessWidget {
               vertical: verticalHeight,
             ),
             decoration: BoxDecoration(
-              color: color,
+              color: disabled ? ConstantColors.disabledColor : color,
               borderRadius: BorderRadius.circular(30),
               border: Border.all(
-                color: borderColor,
+                color: disabled ? ConstantColors.disabledColor : borderColor,
                 width: 1,
               ),
             ),

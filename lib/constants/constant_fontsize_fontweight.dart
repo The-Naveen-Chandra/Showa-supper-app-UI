@@ -9,6 +9,7 @@ class ConstantFontSize {
   static const double small = 15;
   static const double extraSmall = 13;
   static const double extraExtraSmall = 12;
+  static const double extraExtraExtraSmall = 10;
 }
 
 class ConstantFontWeight {

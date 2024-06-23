@@ -14,7 +14,60 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  bool? isChecked = true;
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+
+  bool passwordNotMatch = false;
+  bool passwordInvalid = false;
+  bool isChecked = false;
+  bool isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordController.addListener(_validatePasswords);
+    _confirmPasswordController.addListener(_validatePasswords);
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
+    super.dispose();
+  }
+
+  void _validatePasswords() {
+    setState(() {
+      passwordNotMatch =
+          _passwordController.text != _confirmPasswordController.text;
+      passwordInvalid = !_isPasswordValid(_passwordController.text);
+      _updateButtonState();
+    });
+  }
+
+  bool _isPasswordValid(String password) {
+    // Check if password has at least 8 characters, contains letters, numbers, and symbols
+    if (password.length < 8) return false;
+
+    bool hasLetter = password.contains(RegExp(r'[a-zA-Z]'));
+    bool hasDigit = password.contains(RegExp(r'\d'));
+    bool hasSpecialCharacter =
+        password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'));
+
+    return hasLetter && hasDigit && hasSpecialCharacter;
+  }
+
+  void _updateButtonState() {
+    isButtonEnabled = !passwordNotMatch &&
+        !passwordInvalid &&
+        isChecked &&
+        _emailController.text.isNotEmpty &&
+        _passwordController.text.isNotEmpty &&
+        _confirmPasswordController.text.isNotEmpty;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,20 +139,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         PrimaryTextfield(
                           text: "Email Address",
                           hintText: "Your email address",
-                          controller: TextEditingController(),
+                          controller: _emailController,
                         ),
                         PrimaryTextfield(
                           text: "Password",
                           hintText: "Your password",
-                          controller: TextEditingController(),
+                          controller: _passwordController,
                           isPassword: true,
                         ),
+                        if (passwordInvalid)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              "Password must be at least 8 characters long and include letters, numbers, and symbols.",
+                              style: GoogleFonts.poppins(
+                                fontSize: ConstantFontSize.extraExtraExtraSmall,
+                                fontWeight: ConstantFontWeight.normal,
+                                color: ConstantColors.errorColor,
+                              ),
+                            ),
+                          ),
+
                         PrimaryTextfield(
                           text: "Confirm Password",
                           hintText: "Type again",
-                          controller: TextEditingController(),
+                          controller: _confirmPasswordController,
                           isPassword: true,
                         ),
+                        if (passwordInvalid)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              "Password must be at least 8 characters long and include letters, numbers, and symbols.",
+                              style: GoogleFonts.poppins(
+                                fontSize: ConstantFontSize.extraExtraExtraSmall,
+                                fontWeight: ConstantFontWeight.normal,
+                                color: ConstantColors.errorColor,
+                              ),
+                            ),
+                          ),
+
+                        // Password not match
+                        if (passwordInvalid == false && passwordNotMatch)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 10),
+                            child: Text(
+                              "Passwords do not match!",
+                              style: GoogleFonts.poppins(
+                                fontSize: ConstantFontSize.extraExtraExtraSmall,
+                                fontWeight: ConstantFontWeight.normal,
+                                color: ConstantColors.errorColor,
+                              ),
+                            ),
+                          ),
                       ],
                     ),
                     Column(
@@ -112,6 +204,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               onChanged: (bool? value) {
                                 setState(() {
                                   isChecked = value!;
+                                  _updateButtonState();
                                 });
                               },
                             ),
@@ -191,6 +284,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           fontSize: ConstantFontSize.medium,
                           fontWeight: ConstantFontWeight.bold,
                           borderColor: ConstantColors.primaryColor,
+                          disabled: !isButtonEnabled,
                         ),
                         const SizedBox(
                           height: 28,

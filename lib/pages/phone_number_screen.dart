@@ -11,7 +11,7 @@ import 'package:showa_supper_app/components/phone_number_textfield.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
-  const PhoneNumberScreen({Key? key}) : super(key: key);
+  const PhoneNumberScreen({super.key});
 
   @override
   State<PhoneNumberScreen> createState() => _PhoneNumberScreenState();
@@ -19,6 +19,8 @@ class PhoneNumberScreen extends StatefulWidget {
 
 class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   CountryCode _selectedCountry = countryCodes[0];
+  final TextEditingController _phoneNumberController = TextEditingController();
+  bool _isButtonEnabled = false;
 
   void _selectCountry() {
     Navigator.push(
@@ -34,6 +36,26 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _phoneNumberController.addListener(_validatePhoneNumber);
+  }
+
+  @override
+  void dispose() {
+    _phoneNumberController.dispose();
+    super.dispose();
+  }
+
+  void _validatePhoneNumber() {
+    setState(() {
+      _isButtonEnabled =
+          _phoneNumberController.text.replaceAll(RegExp(r'\D'), '').length ==
+              10;
+    });
   }
 
   @override
@@ -161,7 +183,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                         ),
                       ),
                       const SizedBox(height: 10),
-                      const PhoneNumberTextField(),
+                      PhoneNumberTextField(
+                        controller: _phoneNumberController,
+                      ),
                       const SizedBox(height: 20),
                     ],
                   ),
@@ -182,6 +206,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                   fontSize: ConstantFontSize.medium,
                   fontWeight: ConstantFontWeight.bold,
                   borderColor: ConstantColors.primaryColor,
+                  disabled: !_isButtonEnabled,
                 ),
               ),
             ),

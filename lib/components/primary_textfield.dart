@@ -7,14 +7,14 @@ import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 class PrimaryTextfield extends StatefulWidget {
   final String text;
   final String hintText;
-  final TextEditingController controller;
   final bool isPassword;
+  final TextEditingController controller;
   const PrimaryTextfield({
     super.key,
     required this.text,
     required this.hintText,
-    required this.controller,
     this.isPassword = false,
+    required this.controller,
   });
 
   @override
