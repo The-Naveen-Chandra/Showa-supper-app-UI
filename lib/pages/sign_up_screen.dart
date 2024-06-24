@@ -5,6 +5,7 @@ import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/primary_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
+import 'package:showa_supper_app/pages/profile_setup_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -67,6 +68,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
         _emailController.text.isNotEmpty &&
         _passwordController.text.isNotEmpty &&
         _confirmPasswordController.text.isNotEmpty;
+  }
+
+  void _onPressed() {
+    if (isButtonEnabled) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ProfileSetupScreen(
+            isPersonalInfoCompleted: false,
+            isAddressCompleted: false,
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -278,7 +293,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         PrimaryButton(
                           text: "Agree and continue",
                           color: ConstantColors.primaryColor,
-                          onPressed: () {},
+                          onPressed: _onPressed,
                           verticalHeight: 12,
                           textColor: ConstantColors.whiteColor,
                           fontSize: ConstantFontSize.medium,
