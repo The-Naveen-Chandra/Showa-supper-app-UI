@@ -51,6 +51,62 @@ class CountryCode {
   });
 }
 
+final List<String> inputMethod = [
+  "Alphabet",
+  "Kanji",
+];
+
+final List<String> genderSelector = [
+  "Male",
+  "Female",
+  "Prefer not to answer",
+];
+
+final List<String> occupationSelector = [
+  "Student",
+  "Engineer",
+  "Doctor",
+  "Teacher",
+  "Business",
+  "Female Nurse",
+  "Nurse",
+  "Dentist",
+  "Scientist",
+  "Hairdresser / Beauty Artist",
+  "Pharmacist",
+  "Singer",
+  "Driver / Chauffeur",
+  "Baseball Player",
+  "Soccer Player",
+  "Painter / Artist",
+  "Photographer",
+  "Artist",
+  "Designer",
+  "Writer",
+  "Actor",
+  "Musician",
+  "Athlete",
+  "Politician",
+  "Lawyer",
+  "Accountant",
+  "Banker",
+  "Consultant",
+  "Chef",
+  "Farmer",
+  "Fisherman",
+  "Pilot",
+  "Flight Attendant",
+  "Soldier",
+  "Police Officer",
+  "Firefighter",
+  "Construction Worker",
+  "Electrician",
+  "Plumber",
+  "Mechanic",
+  "Carpenter",
+  "Others",
+];
+
 final List<CountryCode> countryCodes = [
   CountryCode(
     name: 'India',

@@ -25,8 +25,11 @@ class ConstantColors {
   static Color lightGrey = hexToColor('#F3F4F6');
   static Color grey = Colors.grey[300]!;
   static Color darkGrey = hexToColor('#736F75');
+  static Color textFieldColor = hexToColor('#aaa7ad');
   static Color disabledColor = hexToColor('#D7E0E7');
   static Color errorColor = hexToColor('#FF6F79');
+  static Color successColor = hexToColor('#20C18D');
+  static Color lightGreenColor = hexToColor('#effbf7');
 
   static Color linearColor = hexToColor("#24459C");
 }
