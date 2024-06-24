@@ -6,9 +6,14 @@ import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 import 'package:showa_supper_app/pages/face_id_screen.dart';
 
-class ProfileImageScreen extends StatelessWidget {
+class ProfileImageScreen extends StatefulWidget {
   const ProfileImageScreen({super.key});
 
+  @override
+  State<ProfileImageScreen> createState() => _ProfileImageScreenState();
+}
+
+class _ProfileImageScreenState extends State<ProfileImageScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +116,48 @@ class ProfileImageScreen extends StatelessWidget {
             PrimaryButton(
               text: "Next",
               color: ConstantColors.primaryColor,
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  context: context,
+                  backgroundColor: ConstantColors.whiteColor,
+                  builder: (context) {
+                    return SizedBox(
+                      height: MediaQuery.of(context).size.height / 3.8,
+                      width: MediaQuery.of(context).size.width,
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            width: 34,
+                            height: 6,
+                            margin: const EdgeInsets.symmetric(vertical: 16),
+                            decoration: BoxDecoration(
+                              color: ConstantColors.disabledColor,
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          Expanded(
+                            child: ListView(
+                              children: const [
+                                ProfileImageSelector(
+                                  imagePath: 'assets/images/photos_image.png',
+                                  title: 'Choose from camera roll',
+                                ),
+                                SizedBox(height: 14),
+                                ProfileImageSelector(
+                                  imagePath: 'assets/images/camera_image.png',
+                                  title: 'Take Photo',
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
               verticalHeight: 12,
               textColor: ConstantColors.whiteColor,
               fontSize: ConstantFontSize.medium,
@@ -123,6 +169,50 @@ class ProfileImageScreen extends StatelessWidget {
             const SizedBox(height: 20), // Add bottom padding
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ProfileImageSelector extends StatelessWidget {
+  final String imagePath;
+  final String title;
+
+  const ProfileImageSelector({
+    super.key,
+    required this.imagePath,
+    required this.title,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 28),
+      child: Row(
+        children: [
+          Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: ConstantColors.borderColor,
+            ),
+            child: Image.asset(
+              imagePath,
+              width: 40,
+              height: 40,
+            ),
+          ),
+          const SizedBox(width: 10),
+          Text(
+            title,
+            style: GoogleFonts.poppins(
+              fontSize: ConstantFontSize.medium,
+              fontWeight: ConstantFontWeight.normal,
+              color: ConstantColors.primaryTextColor,
+            ),
+          ),
+        ],
       ),
     );
   }
