@@ -13,7 +13,127 @@ class ResetPasswordScreen extends StatefulWidget {
 }
 
 class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
-  bool? isChecked = true;
+  final TextEditingController _emailController = TextEditingController();
+
+  bool isValidEmail(String email) {
+    final RegExp emailRegex = RegExp(
+      r'^[a-zA-Z0-9.a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9]+\.[a-zA-Z]+',
+    );
+    return emailRegex.hasMatch(email);
+  }
+
+  void _showResetPasswordDialog(String email) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          backgroundColor: ConstantColors.whiteColor,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Stack(
+            clipBehavior: Clip.none,
+            alignment: Alignment.topCenter,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 10, vertical: 24),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const SizedBox(height: 50),
+                    Text(
+                      'Password Reset Link Sent',
+                      style: GoogleFonts.poppins(
+                        fontSize: ConstantFontSize.big,
+                        fontWeight: ConstantFontWeight.bold,
+                        color: ConstantColors.orangeColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    const SizedBox(height: 10),
+                    Column(
+                      children: [
+                        Text(
+                          'Successful password reset link sent to email: ',
+                          style: GoogleFonts.poppins(
+                            fontSize: ConstantFontSize.extraExtraExtraSmall,
+                            fontWeight: ConstantFontWeight.normal,
+                            color: ConstantColors.secondaryTextColor,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          email,
+                          style: GoogleFonts.poppins(
+                            fontSize: ConstantFontSize.extraExtraExtraSmall,
+                            fontWeight: ConstantFontWeight.bold,
+                            color: ConstantColors.primaryTextColor,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          '. Please follow the email password reset instructions.',
+                          style: GoogleFonts.poppins(
+                            fontSize: ConstantFontSize.extraExtraExtraSmall,
+                            fontWeight: ConstantFontWeight.normal,
+                            color: ConstantColors.secondaryTextColor,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      child: PrimaryButton(
+                        text: "OK",
+                        color: ConstantColors.primaryColor,
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        verticalHeight: 12,
+                        textColor: ConstantColors.whiteColor,
+                        fontSize: ConstantFontSize.small,
+                        fontWeight: ConstantFontWeight.semiBold,
+                        borderColor: ConstantColors.primaryColor,
+                        paddingRequired: false,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                top: -60,
+                child: Container(
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(
+                      color: ConstantColors.borderColor,
+                      width: 1,
+                    ),
+                  ),
+                  child: CircleAvatar(
+                    radius: 50,
+                    backgroundColor: Colors.white,
+                    child: CircleAvatar(
+                      radius: 44,
+                      backgroundColor: ConstantColors.yellowColor,
+                      child: Image.asset(
+                        "assets/images/mail_check_image.png",
+                        width: 60,
+                        height: 60,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -93,13 +213,24 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                       PrimaryTextfield(
                         text: "Email Address",
                         hintText: "Your email address",
-                        controller: TextEditingController(),
+                        controller: _emailController,
                       ),
                       const SizedBox(height: 22),
                       PrimaryButton(
                         text: "Reset Password",
                         color: ConstantColors.primaryColor,
-                        onPressed: () {},
+                        onPressed: () {
+                          if (isValidEmail(_emailController.text)) {
+                            _showResetPasswordDialog(_emailController.text);
+                          } else {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                content:
+                                    Text('Please enter a valid email address'),
+                              ),
+                            );
+                          }
+                        },
                         verticalHeight: 12,
                         textColor: ConstantColors.whiteColor,
                         fontSize: ConstantFontSize.small,

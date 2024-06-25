@@ -32,4 +32,6 @@ class ConstantColors {
   static Color lightGreenColor = hexToColor('#effbf7');
 
   static Color linearColor = hexToColor("#24459C");
+  static Color yellowColor = hexToColor("#FFC800");
+  static Color orangeColor = hexToColor("#E77824");
 }
