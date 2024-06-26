@@ -12,6 +12,7 @@ Color hexToColor(String hex) {
 
 class ConstantColors {
   static Color primaryColor = hexToColor('#24459C');
+  static Color primaryDarkColor = hexToColor('#1D3C8D');
   static Color primaryTextColor = hexToColor('#4D5983');
   static Color secondaryTextColor = hexToColor('#868DAA');
   static Color tertiaryTextColor = hexToColor('#1E6D8B');
@@ -34,4 +35,6 @@ class ConstantColors {
   static Color linearColor = hexToColor("#24459C");
   static Color yellowColor = hexToColor("#FFC800");
   static Color orangeColor = hexToColor("#E77824");
+  static Color lightPink = hexToColor("#FDE2DD");
+  static Color greenColor = hexToColor("#00B97F");
 }
