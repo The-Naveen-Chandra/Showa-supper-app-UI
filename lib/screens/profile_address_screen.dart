@@ -5,8 +5,8 @@ import 'package:showa_supper_app/components/custom_app_bar.dart';
 import 'package:showa_supper_app/components/postal_code_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/address_field.dart';
-import 'package:showa_supper_app/pages/profile_setup_screen.dart';
+import 'package:showa_supper_app/screens/address_field.dart';
+import 'package:showa_supper_app/screens/profile_setup_screen.dart';
 
 class ProfileAddressScreen extends StatefulWidget {
   const ProfileAddressScreen({super.key});

@@ -3,7 +3,7 @@ import 'package:showa_supper_app/components/carousel_with_indicator.dart';
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/join_us_screen.dart';
+import 'package:showa_supper_app/screens/join_us_screen.dart';
 
 class CarouselScreen extends StatelessWidget {
   const CarouselScreen({super.key});

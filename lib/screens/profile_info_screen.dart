@@ -10,7 +10,7 @@ import 'package:showa_supper_app/components/primary_textfield.dart';
 import 'package:showa_supper_app/components/selector_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/profile_image_screen.dart';
+import 'package:showa_supper_app/screens/profile_image_screen.dart';
 
 class ProfileInfoScreen extends StatefulWidget {
   const ProfileInfoScreen({super.key});

@@ -4,8 +4,8 @@ import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/primary_textfield.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/reset_password_screen.dart';
-import 'package:showa_supper_app/pages/sign_up_screen.dart';
+import 'package:showa_supper_app/screens/reset_password_screen.dart';
+import 'package:showa_supper_app/screens/sign_up_screen.dart';
 
 class SignInWithEmailScreen extends StatefulWidget {
   const SignInWithEmailScreen({super.key});

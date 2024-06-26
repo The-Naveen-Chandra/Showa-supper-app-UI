@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/profile_setup_container.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/dashboard_screen.dart';
-import 'package:showa_supper_app/pages/profile_address_screen.dart';
-import 'package:showa_supper_app/pages/profile_info_screen.dart';
+import 'package:showa_supper_app/screens/dashboard_screen.dart';
+import 'package:showa_supper_app/screens/profile_address_screen.dart';
+import 'package:showa_supper_app/screens/profile_info_screen.dart';
 
 class ProfileSetupScreen extends StatelessWidget {
   final bool isPersonalInfoCompleted;

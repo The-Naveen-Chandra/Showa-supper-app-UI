@@ -1,15 +1,29 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:showa_supper_app/constants/utils.dart';
 
-import 'package:showa_supper_app/pages/search_screen.dart';
-import 'package:showa_supper_app/pages/notification_screen.dart';
+import 'package:showa_supper_app/screens/search_screen.dart';
+import 'package:showa_supper_app/screens/notification_screen.dart';
 import 'package:showa_supper_app/components/appbar_icon_button.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 
-class DashboardScreen extends StatelessWidget {
+class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
+
+  @override
+  State<DashboardScreen> createState() => _DashboardScreenState();
+}
+
+class _DashboardScreenState extends State<DashboardScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -124,7 +138,76 @@ class DashboardScreen extends StatelessWidget {
               ),
             ),
           ),
+          Expanded(
+            child: dashboardPages[_selectedIndex],
+          ),
         ],
+      ),
+      bottomNavigationBar: Theme(
+        data: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6.0),
+                child: Icon(
+                  CupertinoIcons.home,
+                  size: 26,
+                ),
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6.0),
+                child: Icon(
+                  CupertinoIcons.bolt,
+                  size: 26,
+                ),
+              ),
+              label: 'Feed',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6.0),
+                child: Icon(
+                  Icons.chat_bubble_outline,
+                  size: 26,
+                ),
+              ),
+              label: 'Chat',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 6.0),
+                child: Icon(
+                  CupertinoIcons.person,
+                  size: 26,
+                ),
+              ),
+              label: 'Profile',
+            ),
+          ],
+          elevation: 10,
+          backgroundColor: ConstantColors.whiteColor,
+          currentIndex: _selectedIndex,
+          selectedItemColor: ConstantColors.primaryColor,
+          unselectedItemColor: ConstantColors.secondaryTextColor,
+          onTap: _onItemTapped,
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          type: BottomNavigationBarType.fixed,
+          selectedLabelStyle: GoogleFonts.poppins(
+              fontSize: ConstantFontSize.extraSmall,
+              fontWeight: ConstantFontWeight.bold),
+          unselectedLabelStyle: GoogleFonts.poppins(
+            fontSize: ConstantFontSize.extraSmall,
+            fontWeight: ConstantFontWeight.normal,
+          ),
+        ),
       ),
     );
   }

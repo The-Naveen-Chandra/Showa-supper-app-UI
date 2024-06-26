@@ -6,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontSize_fontWeight.dart';
-import 'package:showa_supper_app/pages/carousel_screen.dart';
+import 'package:showa_supper_app/screens/carousel_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});

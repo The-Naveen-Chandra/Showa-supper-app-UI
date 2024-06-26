@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
-import 'package:showa_supper_app/pages/sign_in_screen.dart';
+import 'package:showa_supper_app/screens/sign_in_screen.dart';
 
 class JoinUsScreen extends StatelessWidget {
   const JoinUsScreen({super.key});
