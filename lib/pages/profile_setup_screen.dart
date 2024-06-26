@@ -4,6 +4,7 @@ import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/profile_setup_container.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
+import 'package:showa_supper_app/pages/dashboard_screen.dart';
 import 'package:showa_supper_app/pages/profile_address_screen.dart';
 import 'package:showa_supper_app/pages/profile_info_screen.dart';
 
@@ -125,7 +126,16 @@ class ProfileSetupScreen extends StatelessWidget {
               disabled: !isAddressCompleted || !isPersonalInfoCompleted,
               text: "Sign Up",
               color: ConstantColors.primaryColor,
-              onPressed: () {},
+              onPressed: () {
+                if (isAddressCompleted || isPersonalInfoCompleted) {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const DashboardScreen(),
+                    ),
+                  );
+                }
+              },
               verticalHeight: 12,
               textColor: ConstantColors.whiteColor,
               fontSize: ConstantFontSize.medium,
