@@ -129,11 +129,12 @@ class ProfileSetupScreen extends StatelessWidget {
               color: ConstantColors.primaryColor,
               onPressed: () {
                 if (isAddressCompleted || isPersonalInfoCompleted) {
-                  Navigator.pushReplacement(
+                  Navigator.pushAndRemoveUntil(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const DashboardScreen(),
                     ),
+                    (Route<dynamic> route) => false,
                   );
                 }
               },

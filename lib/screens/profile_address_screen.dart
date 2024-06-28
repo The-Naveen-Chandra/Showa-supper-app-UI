@@ -38,6 +38,21 @@ class _ProfileAddressScreenState extends State<ProfileAddressScreen> {
     });
   }
 
+  void _onActionTap() {
+    FocusScope.of(context).unfocus(); // Dismiss the keyboard
+    Future.delayed(const Duration(seconds: 1), () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const ProfileSetupScreen(
+            isPersonalInfoCompleted: true,
+            isAddressCompleted: true,
+          ),
+        ),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -48,17 +63,7 @@ class _ProfileAddressScreenState extends State<ProfileAddressScreen> {
         leadingIcon: Icons.arrow_back_ios,
         isActionVisible: true,
         isActionDisabled: _isPostalCodeEmpty,
-        onActionTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ProfileSetupScreen(
-                isPersonalInfoCompleted: true,
-                isAddressCompleted: true,
-              ),
-            ),
-          );
-        },
+        onActionTap: _onActionTap,
       ),
       body: SingleChildScrollView(
         child: Padding(

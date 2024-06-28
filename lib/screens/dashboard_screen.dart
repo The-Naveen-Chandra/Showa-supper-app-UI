@@ -35,7 +35,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             color: ConstantColors.primaryColor,
             child: Padding(
               padding: const EdgeInsets.only(
-                  left: 10, right: 10, top: 40, bottom: 20),
+                  left: 10, right: 10, top: 50, bottom: 20),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -113,7 +113,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => SearchScreen(),
+                              builder: (context) => const SearchScreen(),
                             ),
                           );
                         },

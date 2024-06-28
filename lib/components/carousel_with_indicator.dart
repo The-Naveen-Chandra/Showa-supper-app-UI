@@ -67,8 +67,10 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
                     const SizedBox(height: 4),
                     Text(
                       item.value.description,
+                      textAlign: TextAlign.center,
                       style: GoogleFonts.poppins(
                         fontSize: ConstantFontSize.small,
+                        fontWeight: ConstantFontWeight.normal,
                         color: ConstantColors.secondaryTextColor,
                       ),
                     ),

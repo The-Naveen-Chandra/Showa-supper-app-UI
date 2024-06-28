@@ -57,7 +57,7 @@ class SignInScreen extends StatelessWidget {
             ),
             Text(
               textAlign: TextAlign.center,
-              "Log in with your registered phone number to\nget started. If you linked your account to any\nof the below services, you can also log in with\none of those.",
+              "Log in with your registered phone number to get started. If you linked your account to any of the below services, you can also log in with one of those.",
               style: GoogleFonts.poppins(
                 fontSize: ConstantFontSize.small,
                 fontWeight: ConstantFontWeight.normal,

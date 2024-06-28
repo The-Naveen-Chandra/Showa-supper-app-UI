@@ -28,10 +28,10 @@ class _SearchScreenState extends State<SearchScreen> {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.only(top: 14),
+            padding: const EdgeInsets.only(top: 36),
             color: ConstantColors.whiteColor,
             width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height / 8.5,
+            height: MediaQuery.of(context).size.height / 7.4,
             child: Padding(
               padding: const EdgeInsets.only(right: 20),
               child: Row(
