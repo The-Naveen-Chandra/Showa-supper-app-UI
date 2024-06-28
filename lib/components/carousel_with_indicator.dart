@@ -19,7 +19,7 @@ class _CarouselWithIndicatorState extends State<CarouselWithIndicator> {
   @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(const Duration(milliseconds: 50), (Timer timer) {
+    _timer = Timer.periodic(const Duration(seconds: 2), (Timer timer) {
       setState(() {
         _currentIndex = (_currentIndex + 1) % items.length;
       });
