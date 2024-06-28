@@ -1,3 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:showa_supper_app/screens/dashboard/chat_screen.dart';
+import 'package:showa_supper_app/screens/dashboard/feed_screen.dart';
+import 'package:showa_supper_app/screens/dashboard/home_screen.dart';
+import 'package:showa_supper_app/screens/dashboard/profile_screen.dart';
+
 class CarouselItem {
   final String imgSrc;
   final String title;
@@ -35,6 +41,40 @@ final List<CarouselItem> items = [
     imgSrc: 'assets/images/carousel_image_5.png',
     title: 'Chat',
     description: "Stay connected, stay happy",
+  ),
+];
+
+class GridItemModel {
+  final String imageUrl;
+  final String title;
+
+  GridItemModel({required this.imageUrl, required this.title});
+}
+
+final List<GridItemModel> gridItems = [
+  GridItemModel(
+    imageUrl: 'assets/images/reserve_grid_image.png',
+    title: 'Reserve',
+  ),
+  GridItemModel(
+    imageUrl: 'assets/images/marketplace_grid_image.png',
+    title: 'Marketplace',
+  ),
+  GridItemModel(
+    imageUrl: 'assets/images/iot_grid_image.png',
+    title: 'IoT',
+  ),
+  GridItemModel(
+    imageUrl: 'assets/images/wallet_grid_image.png',
+    title: 'Wallet',
+  ),
+  GridItemModel(
+    imageUrl: 'assets/images/subscription_grid_image.png',
+    title: 'Subscription',
+  ),
+  GridItemModel(
+    imageUrl: 'assets/images/help_ai_grid_image.png',
+    title: 'Help AI',
   ),
 ];
 
@@ -203,4 +243,11 @@ final List<CountryCode> countryCodes = [
     code: '+31',
     flagSrc: 'assets/images/flags/NL_flag.png',
   ),
+];
+
+final List<Widget> dashboardPages = [
+  const HomeScreen(),
+  const FeedScreen(),
+  const ChatScreen(),
+  const ProfileScreen(),
 ];
