@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/constants/utils.dart';
 import 'package:showa_supper_app/screens/sign_up_screen.dart';
 import 'package:showa_supper_app/constants/constant_colors.dart';
+import 'package:showa_supper_app/components/primary_button.dart';
 import 'package:showa_supper_app/components/country_selector.dart';
 import 'package:showa_supper_app/components/phone_number_textfield.dart';
+import 'package:showa_supper_app/components/confirm_phone_number_dialog.dart';
 import 'package:showa_supper_app/constants/constant_fontsize_fontweight.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
@@ -64,12 +65,6 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
           _phoneNumberController.text.replaceAll(RegExp(r'\D'), '').length ==
               10;
     });
-  }
-
-  void _handleTextFieldChange(String value, int index) {
-    if (value.isNotEmpty && index < 3) {
-      FocusScope.of(context).nextFocus();
-    }
   }
 
   @override
@@ -217,70 +212,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
-                        return AlertDialog(
-                          title: const Text('Confirm Phone'),
-                          content: Container(
-                            width: double.maxFinite,
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                const Text(
-                                  'Please verify your phone +8180-9392-9609 by entering the code sent to it.',
-                                ),
-                                SizedBox(height: 10),
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: List.generate(
-                                    4,
-                                    (index) => SizedBox(
-                                      width: 50,
-                                      child: TextField(
-                                        controller: controllers[index],
-                                        textAlign: TextAlign.center,
-                                        keyboardType: TextInputType.number,
-                                        maxLength: 1,
-                                        decoration: InputDecoration(
-                                          border: OutlineInputBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                          ),
-                                          counterText: "",
-                                        ),
-                                        onChanged: (value) {
-                                          _handleTextFieldChange(value, index);
-                                        },
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                const SizedBox(height: 10),
-                                TextButton(
-                                  onPressed: () {
-                                    // Resend code functionality
-                                  },
-                                  child: const Text('Resend code in 60 s'),
-                                ),
-                              ],
-                            ),
-                          ),
-                          actions: [
-                            TextButton(
-                              onPressed: () => Navigator.pop(context),
-                              child: Text('Cancel'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                // Submit code functionality
-                                String verificationCode = '';
-                                for (var controller in controllers) {
-                                  verificationCode += controller.text;
-                                }
-                                print('Verification code: $verificationCode');
-                              },
-                              child: Text('Verify'),
-                            ),
-                          ],
+                        return ConfirmPhoneNumberDialog(
+                          countryCode: _selectedCountry.code,
+                          phoneNumber: _phoneNumberController.text,
                         );
                       },
                     );
