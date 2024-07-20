@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:showa_supper_app/components/primary_button.dart';
@@ -145,104 +144,101 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       },
                     ),
                     const SizedBox(height: 20),
-
-
-                      Container(
-                        margin: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.25,
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: MediaQuery.of(context).size.width * 0.01,
-                          vertical: 10,
-                        ),
-                        decoration: BoxDecoration(
-                          color: ConstantColors.lightGrey,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: InkWell(
-                          onTap: () {
-    showModalBottomSheet(
-    context: context,
-    backgroundColor: ConstantColors.whiteColor,
-    builder: (context) {
-    return SizedBox(
-    height: MediaQuery.of(context).size.height / 3.5,
-    width: MediaQuery.of(context).size.width,
-    child: Column(
-    mainAxisSize: MainAxisSize.min,
-    children: [
-    Container(
-    width: 34,
-    height: 6,
-    margin: const EdgeInsets.symmetric(
-    vertical: 16),
-    decoration: BoxDecoration(
-    color: ConstantColors.disabledColor,
-    borderRadius: BorderRadius.circular(30),
-    ),
-    ),
-    Text(
-    "App language",
-    style: GoogleFonts.poppins(
-    fontSize: ConstantFontSize.medium,
-    fontWeight: ConstantFontWeight.bold,
-    color: ConstantColors.primaryTextColor,
-    ),
-    ),
-    const SizedBox(height: 10),
-    Divider(
-    color: ConstantColors.borderColor,
-    height: 1,
-    ),
-    const SizedBox(height: 10),
-    Expanded(
-    child: ListView(
-    children: [
-    _buildLanguageOption(
-    'assets/images/flags/JP_flag.png',
-    '日本語',
-    "Japan",
-    ),
-    _buildLanguageOption(
-    'assets/images/flags/US_flag.png',
-    'English',
-    'US',
-    ),
-    // Add more language options here
-    ],
-    ),
-    ),
-    ],
-    ),
-    );
-    },
-    );
-    },
-
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            children: [
-                              Icon(
-                                CupertinoIcons.globe,
-                                color: ConstantColors.primaryColor,
-                              ),
-                              Text(
-                                _selectedLanguage,
-                                style: GoogleFonts.poppins(
-                                  fontSize: ConstantFontSize.small,
-                                  fontWeight: ConstantFontWeight.normal,
-                                  color: ConstantColors.primaryColor,
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.25,
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        horizontal: MediaQuery.of(context).size.width * 0.01,
+                        vertical: 10,
+                      ),
+                      decoration: BoxDecoration(
+                        color: ConstantColors.lightGrey,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      child: InkWell(
+                        onTap: () {
+                          showModalBottomSheet(
+                            context: context,
+                            backgroundColor: ConstantColors.whiteColor,
+                            builder: (context) {
+                              return SizedBox(
+                                height:
+                                    MediaQuery.of(context).size.height / 3.5,
+                                width: MediaQuery.of(context).size.width,
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Container(
+                                      width: 34,
+                                      height: 6,
+                                      margin: const EdgeInsets.symmetric(
+                                          vertical: 16),
+                                      decoration: BoxDecoration(
+                                        color: ConstantColors.disabledColor,
+                                        borderRadius: BorderRadius.circular(30),
+                                      ),
+                                    ),
+                                    Text(
+                                      "App language",
+                                      style: GoogleFonts.poppins(
+                                        fontSize: ConstantFontSize.medium,
+                                        fontWeight: ConstantFontWeight.bold,
+                                        color: ConstantColors.primaryTextColor,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Divider(
+                                      color: ConstantColors.borderColor,
+                                      height: 1,
+                                    ),
+                                    const SizedBox(height: 10),
+                                    Expanded(
+                                      child: ListView(
+                                        children: [
+                                          _buildLanguageOption(
+                                            'assets/images/flags/JP_flag.png',
+                                            '日本語',
+                                            "Japan",
+                                          ),
+                                          _buildLanguageOption(
+                                            'assets/images/flags/US_flag.png',
+                                            'English',
+                                            'US',
+                                          ),
+                                          // Add more language options here
+                                        ],
+                                      ),
+                                    ),
+                                  ],
                                 ),
-                              ),
-                              Icon(
-                                CupertinoIcons.chevron_down,
+                              );
+                            },
+                          );
+                        },
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Icon(
+                              CupertinoIcons.globe,
+                              color: ConstantColors.primaryColor,
+                            ),
+                            Text(
+                              _selectedLanguage,
+                              style: GoogleFonts.poppins(
+                                fontSize: ConstantFontSize.small,
+                                fontWeight: ConstantFontWeight.normal,
                                 color: ConstantColors.primaryColor,
                               ),
-                            ],
-                          ),
+                            ),
+                            Icon(
+                              CupertinoIcons.chevron_down,
+                              color: ConstantColors.primaryColor,
+                            ),
+                          ],
                         ),
                       ),
-                    
+                    ),
                   ],
                 ),
               ),
